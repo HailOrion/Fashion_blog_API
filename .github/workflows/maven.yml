@@ -24,6 +24,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+
+
     - name: Build and push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
@@ -31,5 +33,5 @@ jobs:
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
-        username: "azeezibnhussein"
-        password: "I am Orion781227"
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
